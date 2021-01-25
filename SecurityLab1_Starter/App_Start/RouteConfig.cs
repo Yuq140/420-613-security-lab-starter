@@ -17,12 +17,6 @@ namespace SecurityLab1_Starter {
                 constraints: new { controller="Home|Inventory|Error" }
             );
 
-            //routes.MapRoute(
-            //    name: "NotFoundAction",
-            //    url: "Home/{*url}",
-            //    defaults: new { controller = "Error", action = "NotFound" }
-            //);
-
             routes.MapRoute(
                 name: "NotFound",
                 url: "{*url}",
