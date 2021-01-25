@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace SecurityLab1_Starter.Controllers {
     public class ErrorController : Controller {
         // GET: Error
-        public ActionResult Index() {
+        public ActionResult NotFound() {
             return View();
         }
     }

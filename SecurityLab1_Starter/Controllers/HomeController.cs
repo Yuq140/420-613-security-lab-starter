@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.Configuration;
+
 namespace SecurityLab1_Starter.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
