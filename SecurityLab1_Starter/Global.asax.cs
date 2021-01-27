@@ -16,33 +16,33 @@ namespace SecurityLab1_Starter
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected void Application_Error(object sender, EventArgs e) {
-            Exception exception = Server.GetLastError();
-            Response.Clear();
+        //protected void Application_Error(object sender, EventArgs e) {
+        //    Exception exception = Server.GetLastError();
+        //    Response.Clear();
 
 
-            if (exception is HttpException httpException) {
-                string action;
+        //    if (exception is HttpException httpException) {
+        //        string action;
 
-                switch (httpException.GetHttpCode()) {
-                    case 404:
-                        // page not found
-                        action = "NotFound";
-                        break;
-                    case 500:
-                        // server error
-                        action = "InternalError";
-                        break;
-                    default:
-                        action = "General";
-                        break;
-                }
+        //        switch (httpException.GetHttpCode()) {
+        //            case 404:
+        //                // page not found
+        //                action = "NotFound";
+        //                break;
+        //            case 500:
+        //                // server error
+        //                action = "InternalError";
+        //                break;
+        //            default:
+        //                action = "General";
+        //                break;
+        //        }
 
-                // clear error on server
-                Server.ClearError();
+        //        // clear error on server
+        //        Server.ClearError();
 
-                Response.Redirect($"~/Error/{action}");
-            }
-        }
+        //        Response.Redirect($"~/Error/{action}");
+        //    }
+        //}
     }
 }

@@ -23,5 +23,11 @@ namespace SecurityLab1_Starter.Controllers {
 
             return View();
         }
+
+        public ActionResult GenError() {
+            //return new HttpStatusCodeResult(500); --> Not Work?
+            throw new Exception();
+            //throw new DivideByZeroException();
+        }
     }
 }
