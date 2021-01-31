@@ -13,5 +13,15 @@ namespace SecurityLab1_Starter.Controllers
         {
             return View();
         }
+
+        protected override void OnException(ExceptionContext filterContext) {
+            filterContext.ExceptionHandled = true;
+
+            // Log the error
+            // _Logger.Error(filterContext.Exception);
+
+            // Redirect or return a view, but not both.
+            filterContext.Result = RedirectToAction("Error", "Index");
+        }
     }
 }

@@ -18,5 +18,9 @@ namespace SecurityLab1_Starter.Controllers {
         public ActionResult ServerError() {
             return View();
         }
+
+        public ActionResult InventoryError() {
+            return View();
+        }
     }
 }
