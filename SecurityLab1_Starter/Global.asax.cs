@@ -6,10 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Diagnostics;
-using NLog;
 
-namespace SecurityLab1_Starter
-{
+namespace SecurityLab1_Starter {
     public class MvcApplication : System.Web.HttpApplication {
 
         //private static readonly Logger _Logger = LogManager.GetCurrentClassLogger();
@@ -24,35 +22,17 @@ namespace SecurityLab1_Starter
         protected void Application_Error(object sender, EventArgs e) {
             Exception exception = Server.GetLastError();
 
-            // Log the error            
-            //_Logger.Error("Yeet" + exception);
+            // Log the error
+            EventLog(exception.Message);
 
             Debug.WriteLine(exception);
+        }
 
-
-            //if (exception is HttpException httpException) {
-            //    string action;
-
-            //    switch (httpException.GetHttpCode()) {
-            //        case 404:
-            //            // page not found
-            //            action = "NotFound";
-            //            break;
-            //        case 500:
-            //            // server error
-            //            action = "ServerError";
-            //            break;
-            //        default:
-            //            action = "Index";
-            //            break;
-            //    }
-
-            //    // clear error on server
-            //    Server.ClearError();
-
-            //    Response.Redirect($"~/Error/{action}?aspxerrorpath={HttpContext.Current.Request.Url}");
-            //}
-            //Response.Redirect("/Error");
-    }
+        private void EventLog(string msg) {
+            using (EventLog eventLog = new EventLog("Application")) {
+                eventLog.Source = "Application";
+                eventLog.WriteEntry($"An error has occured --> {msg}", EventLogEntryType.Warning, 101, 1);
+            }
+        }
     }
 }
